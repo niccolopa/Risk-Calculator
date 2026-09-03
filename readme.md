@@ -1,25 +1,60 @@
-# Portfolio Risk Calculator (my first C++ project)
+# Portfolio Risk Calculator
 
-A command-line tool built in C++ to calculate foundational quantitative finance and risk metrics. This project computes core descriptive statistics from historical asset returns using only the C++ Standard Template Library.
-
-## Overview
-This engine processes arrays of daily financial returns to evaluate asset performance and volatility. It's designed to demonstrate memory-efficient calculations and standard C++ practices without relying on external data science libraries.
+A small command-line C++ program that calculates basic risk statistics from historical returns for two assets.
 
 ## Features
-* **Expected return:** calculates the average historical return.
-* **Sample variance:** measures the dispersion of the returns.
-* **Standard deviation:** evaluate baseline asset volatility.
 
-## Getting started
+- Expected return (arithmetic mean)
+- Sample variance
+- Standard deviation
+- Covariance between Asset A and Asset B
+- Correlation coefficient between Asset A and Asset B
 
-### Prerequisites
-* A C++ compiler (GCC/MinGW, Clang or MSVC);
-* Visual Studio Code or your preferred IDE.
+The calculations use the C++ standard library only. The sample variance and covariance use `n - 1` in the denominator because the return data is treated as a sample of a larger set of possible returns.
 
-### Compilation
-Open your terminal in the root directory of the project and compile the code:
+## Requirements
 
-'''bash
+- A C++ compiler such as GCC/MinGW, Clang, or MSVC
+- A terminal or an IDE such as Visual Studio Code
+
+## Compile and run
+
+Open a terminal in the project directory and compile the program:
+
+```powershell
+g++ main.cpp -o risk_calc.exe
+```
+
+Run it on Windows with PowerShell:
+
+```powershell
+.\risk_calc.exe
+```
+
+On macOS or Linux, use:
+
+```bash
 g++ main.cpp -o risk_calc
+./risk_calc
+```
+
+## Example output
+
+```text
+Expected Return (Asset A): 0.00300000
+Expected Return (Asset B): 0.00240000
+Variance (Asset A): 0.00009850
+Variance (Asset B): 0.00007830
+Standard Deviation (Asset A): 0.00992472
+Standard Deviation (Asset B): 0.00884873
+Covariance: 0.00008075
+Correlation Coefficient: 0.91948264
+```
+
+The return values are decimal returns, so `0.00300000` represents a daily return of `0.3%`.
+
+## Customizing the data
+
+Edit the `asset_a` and `asset_b` vectors in `main.cpp`. Both vectors must contain the same number of observations, and they should represent matching dates or periods so that covariance and correlation are meaningful.
 
 
