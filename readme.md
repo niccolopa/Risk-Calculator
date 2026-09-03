@@ -9,6 +9,7 @@ A small command-line C++ program that calculates basic risk statistics from hist
 - Standard deviation
 - Covariance between Asset A and Asset B
 - Correlation coefficient between Asset A and Asset B
+- Historical 95% Value at Risk (VaR)
 
 The calculations use the C++ standard library only. The sample variance and covariance use `n - 1` in the denominator because the return data is treated as a sample of a larger set of possible returns.
 
@@ -22,7 +23,7 @@ The calculations use the C++ standard library only. The sample variance and cova
 Open a terminal in the project directory and compile the program:
 
 ```powershell
-g++ main.cpp -o risk_calc.exe
+g++ risk_calc.cpp -o risk_calc.exe
 ```
 
 Run it on Windows with PowerShell:
@@ -49,6 +50,8 @@ Standard Deviation (Asset A): 0.00992472
 Standard Deviation (Asset B): 0.00884873
 Covariance: 0.00008075
 Correlation Coefficient: 0.91948264
+95% Value at Risk (VaR) (Asset A): -0.01100000
+95% Value at Risk (VaR) (Asset B): -0.00800000
 ```
 
 The return values are decimal returns, so `0.00300000` represents a daily return of `0.3%`.
