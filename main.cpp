@@ -1,19 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 int main() {
-    // 1. Define hystorical returns (static typing requires declaring the type 'double')
     std::vector<double> daily_returns = {0.015, -0.002, 0.008, -0.011, 0.005};
 
-    // 2. Calculate the sum
+    // 1. Expected return
     double sum = 0.0;
     for (const double& ret : daily_returns) {
         sum += ret;
     }
+    double mean = sum / daily_returns.size();
 
-    //3. Calculate the expected return (mean)
-    double expected_return = sum / daily_returns.size();
+    // 2. variance
+    double squared_diff_sum = 0.0;
+    for (double ret : daily_returns) {
+        squared_diff_sum += std::pow(ret - mean, 2);
+    }
+    double variance = squared_diff_sum / (daily_returns.size() - 1);
 
-    // 4. Output the expected return
-    std::cout << "Expected Return: " << expected_return << "\n";
+    // 3. standard deviation
+    double std_dev = std::sqrt(variance);
+
+    // 4. Output the results
+    std::cout << "Expected Return: " << mean << "\n";
+    std::cout << "Variance: " << variance << "\n";
+    std::cout << "Standard Deviation: " << std_dev << "\n";
 }
