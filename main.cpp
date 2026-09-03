@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 int main() {
     std::vector<double> asset_a = {0.015, -0.002, 0.008, -0.011, 0.005};
@@ -48,8 +49,15 @@ int main() {
     //5. correlation coefficient between asset_a and asset_b
     double correlation_coefficient = covariance / (std_dev_a * std_dev_b);
 
+    //6. calculate the 95% Value at Risk (VaR) for asset_a and asset_b
+    std::sort(asset_a.begin(), asset_a.end());
+    std::sort(asset_b.begin(), asset_b.end());
+    size_t index_a = static_cast<size_t>(0.05 * asset_a.size());
+    size_t index_b = static_cast<size_t>(0.05 * asset_b.size());
+    double var_a = asset_a[index_a];
+    double var_b = asset_b[index_b];
 
-    // 6. Output the results
+    //7. Output the results
     std::cout << std::fixed; // Set fixed-point notation for floating-point output
     std::cout.precision(8); // Set precision to 8 decimal places
     std::cout << "Expected Return (Asset A): " << mean_a << "\n";
@@ -60,4 +68,8 @@ int main() {
     std::cout << "Standard Deviation (Asset B): " << std_dev_b << "\n";
     std::cout << "Covariance: " << covariance << "\n";
     std::cout << "Correlation Coefficient: " << correlation_coefficient << "\n";
+    std::cout << "95% Value at Risk (VaR) (Asset A): " << var_a << "\n";
+    std::cout << "95% Value at Risk (VaR) (Asset B): " << var_b << "\n";
+
+    return 0;
 }
