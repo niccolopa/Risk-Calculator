@@ -34,7 +34,7 @@ Run it on Windows with PowerShell:
 On macOS or Linux, use:
 
 ```bash
-g++ main.cpp -o risk_calc
+g++ risk_calc.cpp -o risk_calc
 ./risk_calc
 ```
 
@@ -55,6 +55,6 @@ The return values are decimal returns, so `0.00300000` represents a daily return
 
 ## Customizing the data
 
-Edit the `asset_a` and `asset_b` vectors in `main.cpp`. Both vectors must contain the same number of observations, and they should represent matching dates or periods so that covariance and correlation are meaningful.
+Edit the `asset_a` and `asset_b` vectors in `risk_calc.cpp`. Both vectors must contain the same number of observations, and they should represent matching dates or periods so that covariance and correlation are meaningful.
 
 
